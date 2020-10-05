@@ -1,0 +1,40 @@
+{
+  "name": "amaggita",
+  "version": "1.0.0",
+  "description": "Automacão de sistemas Amaggi",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx wdio ./config/local.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "WebdriverIO",
+    "Cucumber",
+    "BDD",
+    "E2E",
+    "PageObject",
+    "Appium",
+    "JavaScript"
+  ],
+  "author": "Lucas Barros",
+  "license": "MIT",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^6.5.2",
+    "@wdio/cli": "^6.5.2",
+    "@wdio/cucumber-framework": "^6.5.0",
+    "@wdio/local-runner": "^6.5.2",
+    "@wdio/selenium-standalone-service": "^6.4.7",
+    "@wdio/spec-reporter": "^6.4.7",
+    "@wdio/sync": "^6.5.0",
+    "wdio-cucumber-reporter": "0.0.2",
+    "wdio-video-reporter": "^3.1.1",
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/register": "^7.10.3",
+    "@babel/runtime": "^7.10.3"
+  }
+}
