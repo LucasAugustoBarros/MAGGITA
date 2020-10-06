@@ -27,3 +27,5 @@ git push -u origin main
 Iniciar o Git git init git add --all :/ git pull git push git commit -m "initial commit"
 
 git push origin master
+
+quando eu quiser subir, o comando é git add --all, git commit -m "initial commit", git push
