@@ -12,6 +12,7 @@ class TelaInicial {
     //Metodos dos elementos de ação
     validarAutenticado(){
         this.lblUsuarioLogado.waitForDisplayed();
+        return this.lblUsuarioLogado.getText();
     }
 }
 module.exports = TelaInicial;

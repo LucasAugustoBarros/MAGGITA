@@ -22,6 +22,6 @@ When(/^eu clico em Entrar com Conta Amaggi$/, () => {
 });
 
 Then(/^eu visualizo a tela do sistema$/, () => {
-    telaIncial.validarAutenticado();
-    console.log();
+    let result = telaIncial.validarAutenticado();
+    console.log(result);
 });
