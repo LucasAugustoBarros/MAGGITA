@@ -18,7 +18,7 @@ Given(/^eu estou na tela de home page do Carguero$/, () => {
 });
 
 When(/^eu clico em Entrar com Conta Amaggi$/, () => {
-    homePage.btnAmaggi();
+    homePage.autenticar();
 });
 
 Then(/^eu visualizo a tela do sistema$/, () => {

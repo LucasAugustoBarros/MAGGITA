@@ -12,7 +12,6 @@ class HomePage {
     //Metodos dos elementos de ação
     autenticar(){
         this.btnAmaggi.waitForDisplayed();
-        browser.btnAmaggi.click;
     }
 
     open(){
