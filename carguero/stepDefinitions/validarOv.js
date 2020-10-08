@@ -25,6 +25,7 @@ When(/^eu vou a tela de lote embarcador$/, () => {
 });
 
 Then(/^eu digito a ov para pesquisa e valido se a mesma existe "([^"]*)"$/, (ov) => {
-    let result = loteEmbarcadorPage.validarOv();
+    let result = loteEmbarcadorPage.validarOv(ov);
+    console.log(ov);
     console.log(result);
 });
