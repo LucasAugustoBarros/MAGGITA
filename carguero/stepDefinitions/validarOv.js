@@ -24,8 +24,17 @@ When(/^eu vou a tela de lote embarcador$/, () => {
     loteEmbarcadorPage.clicarLoteEmbarcador();
 });
 
-Then(/^eu digito a ov para pesquisa e valido se a mesma existe "([^"]*)"$/, (ov) => {
+When(/^eu digito a ov para pesquisa e valido se a mesma existe "([^"]*)"$/, (ov) => {
     let result = loteEmbarcadorPage.validarOv(ov);
     console.log(ov);
-    console.log(result);
+});
+Then(/^eu preencho os campos da ov para liberar "([^"]*)" "([^"]*)"$/, (transp,valor) => {
+    let statusOv = loteEmbarcadorPage.validarStatusOv();
+    if (statusOv == 'Incompleto')
+    {
+        loteEmbarcadorPage.selecionarOv();
+        loteEmbarcadorPage.selecionarConjTransp();
+        loteEmbarcadorPage.inserirTransp(transp,valor);
+    }
+    loteEmbarcadorPage.salvarOv();
 });
