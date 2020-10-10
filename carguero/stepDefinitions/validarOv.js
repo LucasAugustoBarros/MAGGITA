@@ -34,6 +34,7 @@ Then(/^eu preencho os campos da ov para liberar "([^"]*)" "([^"]*)"$/, (transp,v
     {
         loteEmbarcadorPage.selecionarOv();
         loteEmbarcadorPage.selecionarConjTransp();
+        loteEmbarcadorPage.selecionarCarroTransp();
         loteEmbarcadorPage.inserirTransp(transp,valor);
     }
     loteEmbarcadorPage.salvarOv();

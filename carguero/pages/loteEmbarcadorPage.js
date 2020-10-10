@@ -12,10 +12,15 @@ class LoteEmbarcadorPage {
     get lblRiLoteEmbarcador() {return $('div#car-row-0 h2')}
     get lblRiLoteEmbarcadorClick() {return $('div#car-row-0 h2')}
     get lblStatusLoteEmbarcador() {return $('div#car-row-0 div:nth-child(1) > div > span')}
+    get conjuntoTransportadorLote() {return $('div#app-root div:nth-child(1) > div:nth-child(1) > div.buttonMarcaTodos___-oD4g > a')}
+    get carroceriaTransportadorLote() {return $('div#app-root div:nth-child(1) > div:nth-child(1) > div.buttonMarcaTodos___-oD4g > a')}
+    get lblCadenciaEmbarcador() {return $('div#car-row-0 div:nth-child(2) > div.ant-col-sm-6 > div > div')}
+    get quantidadeProdTransportadora() {return $('div:nth-child(3) > div > div > input#quantidade')}
     get inputTransLoteEmbarcador() {return $('form > div:nth-child(2) > div > div > input')}
     get inputValorFrete() {return $('input#valorFreteTrechoFiscal')}
     get aplicarBtn() {return $('div.form-buttons-align-right-content > button[type="submit"].ui.green.icon.right.labeled.button')}
     get msgSalvo() {return $('div > div.ant-notification-notice-message')}
+    get inputValorCadencia() {return $('div#app-root div.ant-tabs-tabpane.ant-tabs-tabpane-active > div:nth-child(1) > div > div > div:nth-child(1) > div:nth-child(1) > div > div > input')}
     
     //Metodos dos elementos de ação
     clicarLoteEmbarcador(){
@@ -35,42 +40,74 @@ class LoteEmbarcadorPage {
         this.lblStatusLoteEmbarcador.waitForDisplayed();
         return this.lblStatusLoteEmbarcador.getText();
     }
+    validarCadenciaOv(){
+        this.lblCadenciaEmbarcador.waitForDisplayed();
+        return this.lblCadenciaEmbarcador.getText();
+    }
     selecionarOv(){
         const loteClick = $('div#car-row-0 h2');
         loteClick.click();
     }
     selecionarConjTransp(){
-            const conjuntoTransportadorLotelick = $('div#app-root div:nth-child(1) > div:nth-child(1) > div.buttonMarcaTodos___-oD4g > a');
-            conjuntoTransportadorLotelick.click();
+        this.conjuntoTransportadorLote.waitForDisplayed();
+        browser.pause(1000);
+        let conjunto = this.conjuntoTransportadorLote.getText();
+        console.log(conjunto);
+            if (conjunto == 'Marcar todos'){
+                browser.pause(1000);
+                const conjuntoTransportadorLotelick = $('div#app-root div:nth-child(1) > div:nth-child(1) > div.buttonMarcaTodos___-oD4g > a');
+                conjuntoTransportadorLotelick.click();
+                browser.pause(1000);
+            }
+
+    }
+    selecionarCarroTransp(){
+        this.carroceriaTransportadorLote.waitForDisplayed();
+        browser.pause(1000);
+        let carroceria = this.carroceriaTransportadorLote.getText();
+        if (carroceria == 'Marcar todos'){
             const tipoCarroceriaLotelick = $('div#app-root div:nth-child(2) > div:nth-child(1) > div.buttonMarcaTodos___-oD4g > a');
             tipoCarroceriaLotelick.click();
+            browser.pause(1000);
+        }
+
     }
     inserirTransp(transp,valor){
         const transportadoraBtnNova = $('div#app-root div:nth-child(1) > div:nth-child(1) > button[type="button"]');
         transportadoraBtnNova.click();
         this.inputTransLoteEmbarcador.waitForDisplayed();
         this.inputTransLoteEmbarcador.setValue(transp);
+        browser.pause(1000);
+        const transpSelecionadaClick = $('div.ant-modal-body > form > div:nth-child(2) > div > div > div > div')
+        transpSelecionadaClick.click();
         browser.keys('Enter');
+        this.quantidadeProdTransportadora.waitForDisplayed();
+        this.quantidadeProdTransportadora.setValue("0");
+        browser.pause(1000);
         const modalidadePagRadio = $('div:nth-child(5) > div > div > div:nth-child(1) > label');
         modalidadePagRadio.click();
         this.inputValorFrete.waitForDisplayed();
-        const freteClick = $('input#valorFreteTrechoFiscal');
-        freteClick.click();
         this.inputValorFrete.setValue(valor);
+        this.aplicarBtn.waitForDisplayed();
+        const freteClick = $('div:nth-child(10) > div > textarea#observacoes');
+        freteClick.click();
         browser.keys('Tab');
-        setTimeout(() => { }, 1000);
-        browser.keys('Tab');
-        setTimeout(() => { }, 1000);
         browser.keys('Tab');
         browser.keys('Enter');
-        let result2 = this.inputTransLoteEmbarcador.getValue();
-        console.log(result2);
-        let result3 = this.inputValorFrete.getValue();
-        console.log(result3);
+        browser.pause(2500);
+    }
+    inserirCadencia(){
+        const cadenciaClick = $('div#app-root div:nth-child(3) > h3');
+        cadenciaClick.click();
+        this.inputValorCadencia.setValue('500000');
+        const aplicarClick = $('div#app-root div:nth-child(2) > button[type="button"]');
+        aplicarClick.click();
     }
     salvarOv(){
+        browser.pause(2500);
         const salvarBtn = $('div#app-root button[type="submit"].ui.orange.small.compact.icon.right.labeled.button');
         salvarBtn.click();
+        browser.pause(3000);
         this.msgSalvo.waitForDisplayed();
         expect(msgSalvo.getText()).to.eql ('SALVO COM SUCESSO!');
     }
