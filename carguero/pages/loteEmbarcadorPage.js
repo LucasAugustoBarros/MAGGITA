@@ -47,6 +47,7 @@ class LoteEmbarcadorPage {
     selecionarOv(){
         const loteClick = $('div#car-row-0 h2');
         loteClick.click();
+        browser.pause(1000);
     }
     selecionarConjTransp(){
         this.conjuntoTransportadorLote.waitForDisplayed();
@@ -96,20 +97,30 @@ class LoteEmbarcadorPage {
         browser.keys('Enter');
         browser.pause(2500);
     }
-    inserirCadencia(){
+    editarLoteEmbarcador(){
+        const editarLote = $('div#app-root button[type="button"]');
+        editarLote.click();
+        browser.pause(1000);
+    }   
+    inserirCadencia(cadencia){
         const cadenciaClick = $('div#app-root div:nth-child(3) > h3');
         cadenciaClick.click();
-        this.inputValorCadencia.setValue('500000');
-        const aplicarClick = $('div#app-root div:nth-child(2) > button[type="button"]');
+        browser.pause(1000);
+        this.inputValorCadencia.setValue(cadencia);
+        browser.pause(1000);
+        const aplicarClick = $('[class="ui button button"]');
         aplicarClick.click();
     }
+    liberarTransportadora(){
+        const liberarTransp = $('div#car-row-0 label');
+        liberarTransp.click();
+        browser.pause(1000);
+    }   
     salvarOv(){
         browser.pause(2500);
         const salvarBtn = $('div#app-root button[type="submit"].ui.orange.small.compact.icon.right.labeled.button');
         salvarBtn.click();
         browser.pause(3000);
-        this.msgSalvo.waitForDisplayed();
-        expect(msgSalvo.getText()).to.eql ('SALVO COM SUCESSO!');
     }
 
 }
