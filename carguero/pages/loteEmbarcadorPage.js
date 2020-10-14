@@ -20,7 +20,7 @@ class LoteEmbarcadorPage {
         this.inputOv.waitForDisplayed();
         this.inputOv.setValue(ov);
         browser.keys('Enter');
-        setTimeout(() => {  console.log("2seg!"); }, 5000);
+        setTimeout(() => {  console.log("5seg!"); }, 5000);
         this.lblRiLoteEmbarcador.waitForDisplayed();
         return this.lblRiLoteEmbarcador.getText();
     }
