@@ -3,13 +3,14 @@
  * Autor: Lucas Barros
  * Data: 07/10/2020
  */
-
+var numerolote;
 
 class LoteEmbarcadorPage {
     // Define os elementos da tela
     get icoLoteEmbarcador() { return $('[id="side-bar-item-fa fa-cube"]') }
     get inputOv() {return $('div#app-root div.float-left > div > div > input[type="text"]')}
     get lblRiLoteEmbarcador() {return $('div#car-row-0 h2')}
+    get lblNumberLoteEmbarcador() {return $('div#car-row-0 h1')}
     get lblRiLoteEmbarcadorClick() {return $('div#car-row-0 h2')}
     get lblStatusLoteEmbarcador() {return $('div#car-row-0 div:nth-child(1) > div > span')}
     get conjuntoTransportadorLote() {return $('div#app-root div:nth-child(1) > div:nth-child(1) > div.buttonMarcaTodos___-oD4g > a')}
@@ -21,6 +22,8 @@ class LoteEmbarcadorPage {
     get aplicarBtn() {return $('div.form-buttons-align-right-content > button[type="submit"].ui.green.icon.right.labeled.button')}
     get msgSalvo() {return $('div > div.ant-notification-notice-message')}
     get inputValorCadencia() {return $('div#app-root div.ant-tabs-tabpane.ant-tabs-tabpane-active > div:nth-child(1) > div > div > div:nth-child(1) > div:nth-child(1) > div > div > input')}
+    get icoLoteTransportador() {return $('[id="side-bar-item-fa fa-cubes"]')}
+    get inputLoteEmbarcadorTransportador() {return $('[id="id-1602338291523"]')}
     
     //Metodos dos elementos de ação
     clicarLoteEmbarcador(){
@@ -35,6 +38,7 @@ class LoteEmbarcadorPage {
         setTimeout(() => {  console.log("Validar Ov!"); }, 2000);
         this.lblRiLoteEmbarcador.waitForDisplayed();
         return this.lblRiLoteEmbarcador.getText();
+        let numerolote = this.lblNumberLoteEmbarcador.getText();
     }
     validarStatusOv(){
         this.lblStatusLoteEmbarcador.waitForDisplayed();
@@ -122,6 +126,18 @@ class LoteEmbarcadorPage {
         salvarBtn.click();
         browser.pause(3000);
     }
-
+    loteTransportador(){
+        browser.pause(2500);
+        this.icoLoteTransportador.waitForDisplayed();
+        const ico2Click = $('[id="side-bar-item-fa fa-cubes"]');
+        ico2Click.click();
+    }
+    loteTransportador(numerolote){
+        browser.pause(2500);
+        this.inputLoteEmbarcadorTransportador(numerolote);
+        browser.keys('Enter');
+        const ico2Click = $('[id="side-bar-item-fa fa-cubes"]');
+        ico2Click.click();
+    }
 }
 module.exports = LoteEmbarcadorPage;
