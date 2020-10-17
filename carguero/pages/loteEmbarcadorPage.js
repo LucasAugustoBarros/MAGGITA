@@ -3,7 +3,7 @@
  * Autor: Lucas Barros
  * Data: 07/10/2020
  */
-var numerolote;
+
 
 class LoteEmbarcadorPage {
     // Define os elementos da tela
@@ -35,14 +35,17 @@ class LoteEmbarcadorPage {
         this.inputOv.waitForDisplayed();
         this.inputOv.setValue(ov);
         browser.keys('Enter');
-        setTimeout(() => {  console.log("Validar Ov!"); }, 2000);
+        browser.pause(2000);
         this.lblRiLoteEmbarcador.waitForDisplayed();
         return this.lblRiLoteEmbarcador.getText();
-        let numerolote = this.lblNumberLoteEmbarcador.getText();
     }
     validarStatusOv(){
         this.lblStatusLoteEmbarcador.waitForDisplayed();
         return this.lblStatusLoteEmbarcador.getText();
+    }
+    validarAmigaelOv(){
+        this.lblNumberLoteEmbarcador.waitForDisplayed();
+        return this.lblNumberLoteEmbarcador.getText();
     }
     validarCadenciaOv(){
         this.lblCadenciaEmbarcador.waitForDisplayed();
