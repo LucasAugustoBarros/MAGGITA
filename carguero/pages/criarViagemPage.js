@@ -80,7 +80,7 @@ class CriarViagemPage {
     }
     numeroViagem(){
         this.lblCodigoViagem.waitForDisplayed();
-        browser.pause(1000);
+        browser.pause(3000);
         return this.lblCodigoViagem.getText();
     }
 }

@@ -9,14 +9,16 @@ let path = require('path');
 
 const CriarViagemPage = require('../pages/CriarViagemPage');
 const GravarGenerico = require('../../util/gravarGenerico');
-const {amgLtG} = require('../../tmp/amglt.json')
+const ReplaceGeral = require ('../../util/replace')
 
 const gravarGenerico = new GravarGenerico();
 const criarViagem  = new CriarViagemPage();
+const replacegeral = new ReplaceGeral();
 
 When(/^eu seleciono o lote para criar a viagem$/, () => {
     criarViagem.clicarViagem();
-    var amgLtGG = amgLtG.replace(/#/i,'');
+    const {amgLtG} = require('../../tmp/amglt.json');
+    var amgLtGG = replacegeral.replaceAmigavel(amgLtG);
     console.log(amgLtGG);
     criarViagem.buscarLoteViagem(amgLtGG);
     criarViagem.selecionarLote();
