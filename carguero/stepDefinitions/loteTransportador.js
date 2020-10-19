@@ -38,6 +38,7 @@ When(/^eu valido a ov "([^"]*)" "([^"]*)"$/, (ov,cadencia) => {
         loteEmbarcadorPage.selecionarCarroTransp();
         loteEmbarcadorPage.inserirTransp(transp,valor);
         loteEmbarcadorPage.salvarOv();
+        loteTransportador.clicarLoteTransportador();
     }
     if (statusOv == 'Aguardando liberação')
     {
@@ -49,6 +50,7 @@ When(/^eu valido a ov "([^"]*)" "([^"]*)"$/, (ov,cadencia) => {
         loteEmbarcadorPage.liberarTransportadora();
         loteEmbarcadorPage.inserirCadencia(cadencia);
         loteEmbarcadorPage.salvarOv();
+        loteTransportador.clicarLoteTransportador();
     }
     if (statusOv == 'Liberado', semCadencia == 'SEM CADÊNCIA')
     {
